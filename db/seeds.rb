@@ -10,19 +10,45 @@ Game.delete_all
 GameNight.delete_all
 
 
+#this stores boardgameatlas API information in a variable to .each through for seed data
+
 resp = RestClient::Request.execute(method: :get,
     url: "https://api.boardgameatlas.com/api/search?order_by=rank&ascending=false&client_id=nhcfo4R0Ig",
     headers:{
         'Content-Type': 'application/json'
     })
     games_data = JSON.parse(resp.body)
-    games = games_data
+    games = games_data.first
+    open('myfile.out', 'w') do |f|
+        f << games
+    end
+    
+    games_list = games[1]
+   
 
-    byebug
 
-    # games.each do |game|
-    #     Game.create(title: game["games"]["name"])
-    # end
+    puts "Seeding Games (There is alot...)"
+
+    games_list.each do |game|
+        Game.create(
+            title: game["name"],
+            genre: game["genre"],
+            msrp: game["msrp"],
+            year_published: game["year_published"],
+            min_players: game["min_players"],
+            max_players: game["max_players"],
+            min_playtime: game["min_playtime"],
+            max_playtime: game["max_playtime"],
+            min_age: game["min_age"],
+            description_preview: game["description_preview"],
+            thumb_image: game["images"]["thumb"],
+            small_image: game["images"]["small"],
+            medium_image: game["images"]["medium"],
+            large_image: game["images"]["large"],
+            original_image: game["images"]["original"],
+
+        )
+    end
 
 
 
@@ -32,10 +58,11 @@ puts "Seeding Users 🐱☕🐱☕🐱☕"
 
 sando = User.create(username: "Sand0", password: "password")
 
-puts "Seeding Games (There is alot...)"
 
 
+puts "Seeding some GameNights !!!!"
 
+GameNight.create(user_id: 1, game_id: 1)
 
 
 puts "Seeding Finished!"

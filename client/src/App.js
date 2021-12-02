@@ -1,29 +1,31 @@
+import React from "react";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Navbar from "./components/Navbar";
+import Profile from "./components/Profile";
+
+
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+  const [user, setUser ] = useState("");
 
   return (
-    <div></div>
-    // <BrowserRouter>
-    //   <div className="App">
-    //     <Switch>
-    //       <Route path="/testing">
-    //         <h1>Test Route</h1>
-    //       </Route>
-    //       <Route path="/">
-    //         <h1>Page Count: {count}</h1>
-    //       </Route>
-    //     </Switch>
-    //   </div>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar user={user} setUser={setUser} />
+        <Routes>
+          <Route path="/testing"/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/login" element={<Login setUser={setUser} />}/>
+          <Route path="/signup" element={<Signup setUser={setUser} />}/>
+          <Route path="/profile" element={<Profile setUser={setUser} />}/>
+
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

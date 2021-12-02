@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.registration-container{
+  position: relative;
+  background: rgba(240, 248, 255, 0.5);
+  width: 600px;
+  margin-top: 40%;
+  margin-bottom: auto;
+  margin: 0 auto;
+  
+  }
