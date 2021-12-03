@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_180305) do
+ActiveRecord::Schema.define(version: 2021_12_03_001746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_180305) do
   create_table "game_nights", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
-    t.time "time_played"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -49,6 +48,10 @@ ActiveRecord::Schema.define(version: 2021_11_29_180305) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "location"
+    t.boolean "lfg"
+    t.integer "favorite_game"
+    t.string "image"
   end
 
 end
