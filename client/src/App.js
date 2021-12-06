@@ -8,20 +8,53 @@ import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 
 
-
 function App() {
   const [user, setUser ] = useState("");
+  const [boardGameList, setBoardGameList] = useState("");
+  //creatubg state to hold search form data
+  const [searchFormData, setSearchFormData] = useState("");
+
+
+  function handleChange(event){
+    setSearchFormData(event.target.value)
+  }
+
+  useEffect(() => {
+    fetch("http://localhost:3000/games")
+    .then(response => response.json())
+    .then(data => checkIfBoardGameExists(data));
+  }, []);
+
+
+
+  function checkIfBoardGameExists(data){
+    if (!!data){
+      setBoardGameList(data) 
+    }
+}
+  // const boardGamesToDisplay = boardGameList.filter(boardgame => {
+  //   if (boardgame.title.toLowerCase().includes(searchFormData.toLowerCase())) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // });
+
+  
+
+
 
   return (
+
     <BrowserRouter>
       <div className="App">
         <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/testing"/>
-          <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Home user={user} handleChange={handleChange} searchFormData={searchFormData} boardGameList={boardGameList} setBoardGameList={setBoardGameList} />}/>
           <Route path="/login" element={<Login setUser={setUser} />}/>
-          <Route path="/signup" element={<Signup setUser={setUser} />}/>
-          <Route path="/profile" element={<Profile user={user} />}/>
+          <Route path="/signup" element={<Signup boardGameList={boardGameList} setUser={setUser} />}/>
+          <Route path="/profile" element={<Profile boardGameList={boardGameList} user={user} />}/>
 
         </Routes>
       </div>

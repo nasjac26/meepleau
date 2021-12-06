@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_001746) do
+ActiveRecord::Schema.define(version: 2021_12_03_184821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_12_03_001746) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "location"
     t.boolean "lfg"
-    t.integer "favorite_game"
+    t.integer "game_id"
     t.string "image"
   end
 

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :game_nights
   resources :games
   resources :users
-  get "/hello", to: "application#hello_world"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"

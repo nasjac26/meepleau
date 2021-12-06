@@ -3,11 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function Signup({ setUser }) {
+function Signup({ setUser, boardGameList }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirmation] = useState("");
     const navigate = useNavigate();
+    const [game_id, setGameId] = useState("")
+
+    const favoriteBoardGameOptionFactory = () => boardGameList.map(
+        (singleGame) => {
+            return(
+                <option value={singleGame.id}>{singleGame.title}</option>
+
+            )
+        }
+    )
+
 
     
 
@@ -21,7 +32,8 @@ function Signup({ setUser }) {
             body: JSON.stringify({
             username,
             password,
-            password_confirmation
+            password_confirmation,
+            game_id
         }),
         }).then((r) => {
             if (r.ok) {
@@ -34,6 +46,7 @@ function Signup({ setUser }) {
         });
         navigate('/')
     }
+    console.log(game_id)
 
     return (  
         <div className="container registration-container mt-5">
@@ -69,6 +82,10 @@ function Signup({ setUser }) {
                         onChange={(event) => setPasswordConfirmation(event.target.value)}
                         />
                 </div>
+                <b> Which game in our games library is your favorite? </b>  
+                    <select onchange={(event) => setGameId(event.target.value)}>
+                        {favoriteBoardGameOptionFactory()}
+                    </select>  
                 <button type="submit" class="btn btn-primary">Signup</button>
             </form>
         </div>

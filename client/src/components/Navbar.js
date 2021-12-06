@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar( { user, setUser } ) {
+  const navigate = useNavigate();
 
     function handleLogoutClick() {
       fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -8,6 +9,7 @@ function Navbar( { user, setUser } ) {
           setUser(null);
           }
       });
+    navigate('/');
   }
   
   function showLoginButton() {
@@ -29,7 +31,7 @@ function Navbar( { user, setUser } ) {
   
   function showProfileButton() {
       return (
-        <NavLink className="btn btn-secondary m-3" to="/profile">My Profile</NavLink>
+        <NavLink className="btn btn-secondary m-3" to="/profile">Log a Game Session!</NavLink>
       )
   }
 
@@ -44,12 +46,13 @@ function Navbar( { user, setUser } ) {
 
     <div className="container">
 
-        <nav class="navbar navbar-light bg-dark rounded">
-          <div class="d-flex mx-auto me-1">
+        <nav className="navbar navbar-styling rounded">
+          <div className="">
             <NavLink className="btn btn-secondary m-3" to="/">Home</NavLink>
             {user ? showProfileButton() : null}
             {!user ? showSignupButton() : null}
-            {!user ? showLoginButton() : showLogoutButton()};
+            {!user ? showLoginButton() : showLogoutButton()}
+            
             </div>
         </nav>
 
