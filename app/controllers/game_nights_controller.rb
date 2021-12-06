@@ -15,4 +15,11 @@ class GameNightsController < ApplicationController
             )
         game_night.to_json
     end
+
+    def update
+        this_user = User.find(params[:id])
+        this_user.update!(game_id: params[:game_id])
+        render json: this_user, status: :ok
+
+    end
 end

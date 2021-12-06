@@ -8,7 +8,7 @@ function GameCard(props) {
 
     function showFavoriteAGameButton() {
         return (
-            <button type="button" className="btn btn-info btn-sm m-3">Set as Favorite Game</button>
+            <button type="button" onClick={handleFavoriteGameClick} className="btn btn-info btn-sm m-3">Set as Favorite Game</button>
         );
     }
 
@@ -31,6 +31,20 @@ function GameCard(props) {
         })
     }
             
+    //handling favorite game PATCH request
+
+    function handleFavoriteGameClick(event){
+        event.preventDefault()
+        fetch('/gamenights', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({game_id: props.id})
+        }
+
+        )
+    }
     
 
 
