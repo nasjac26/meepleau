@@ -11,7 +11,7 @@ import Profile from "./components/Profile";
 function App() {
   const [user, setUser ] = useState("");
   const [boardGameList, setBoardGameList] = useState("");
-  //creatubg state to hold search form data
+  //creating state to hold search form data
   const [searchFormData, setSearchFormData] = useState("");
 
 
@@ -32,16 +32,6 @@ function App() {
       setBoardGameList(data) 
     }
 }
-  // const boardGamesToDisplay = boardGameList.filter(boardgame => {
-  //   if (boardgame.title.toLowerCase().includes(searchFormData.toLowerCase())) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // });
-
-  
-
 
 
   return (

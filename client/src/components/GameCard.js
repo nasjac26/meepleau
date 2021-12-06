@@ -2,7 +2,7 @@
 function GameCard(props) {
     function showLogASessionButton() {
         return (
-            <button type="button" className="btn btn-info btn-sm">Log a Play Session</button>
+            <button type="button" onClick={handleGameSessionClick} className="btn btn-info btn-sm">Log a Play Session</button>
         );
     }
 
@@ -11,6 +11,27 @@ function GameCard(props) {
             <button type="button" className="btn btn-info btn-sm m-3">Set as Favorite Game</button>
         );
     }
+
+        //handling logging of play session with POST
+
+
+    
+    function handleGameSessionClick(event){
+        event.preventDefault()
+        const gameNight = {
+            user_id: props.user.id,
+            game_id: props.id
+        }
+        fetch('/gamenights',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gameNight)
+        })
+    }
+            
+    
 
 
     return (

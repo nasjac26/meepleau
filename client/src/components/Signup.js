@@ -13,7 +13,7 @@ function Signup({ setUser, boardGameList }) {
     const favoriteBoardGameOptionFactory = () => boardGameList.map(
         (singleGame) => {
             return(
-                <option value={singleGame.id}>{singleGame.title}</option>
+                <option key={singleGame.id} value={singleGame.id}>{singleGame.title}</option>
 
             )
         }

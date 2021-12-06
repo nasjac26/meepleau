@@ -1,9 +1,9 @@
 import GameCard from "./GameCard";
-import { useState } from "react"
 
 function Search(props) {
+    
+    // Handeling the render/filter of games
     let filteredBoardGameList = [];
-
     const filterBoardGameList = props.boardGameList.filter(boardGame => {
         if (boardGame.title.toLowerCase().includes(props.searchFormData.toLowerCase())) {
             return filteredBoardGameList.push(boardGame);
@@ -30,6 +30,7 @@ function Search(props) {
                 </div>
             );
         });
+    
 
 
 
@@ -46,7 +47,6 @@ function Search(props) {
                     onChange={props.handleChange}
                     value={props.searchFormData}
                 />
-                <button type="submit">Search</button>
                     </form>
             </div>
             <div>
