@@ -9,12 +9,12 @@ function Navbar( { user, setUser } ) {
           setUser(null);
           }
       });
-    navigate('/');
+    navigate('/ourlibrary');
   }
   
   function showLoginButton() {
       return (
-        <NavLink className="btn btn-secondary m-3" to="/login">Login</NavLink>
+        <NavLink className="btn btn-secondary m-3" to="/">Login</NavLink>
       );
     } 
   function showLogoutButton() {
@@ -48,7 +48,7 @@ function Navbar( { user, setUser } ) {
 
         <nav className="navbar navbar-styling rounded">
           <div className="">
-            <NavLink className="btn btn-secondary m-3" to="/">Home</NavLink>
+            <NavLink className="btn btn-secondary m-3" to="/ourlibrary">Our Library</NavLink>
             {user ? showProfileButton() : null}
             {!user ? showSignupButton() : null}
             {!user ? showLoginButton() : showLogoutButton()}

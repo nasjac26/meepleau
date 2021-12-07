@@ -41,10 +41,10 @@ function App() {
         <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/testing"/>
-          <Route path="/" element={<Home user={user} handleChange={handleChange} searchFormData={searchFormData} boardGameList={boardGameList} setBoardGameList={setBoardGameList} />}/>
-          <Route path="/login" element={<Login setUser={setUser} />}/>
+          <Route path="/ourlibrary" element={<Home user={user} handleChange={handleChange} searchFormData={searchFormData} boardGameList={boardGameList} setBoardGameList={setBoardGameList} />}/>
+          <Route path="/" element={<Login setUser={setUser} />}/>
           <Route path="/signup" element={<Signup boardGameList={boardGameList} setUser={setUser} />}/>
-          <Route path="/profile" element={<Profile boardGameList={boardGameList} user={user} />}/>
+          <Route path="/profile" element={<Profile user={user} handleChange={handleChange} searchFormData={searchFormData} boardGameList={boardGameList} setBoardGameList={setBoardGameList} />}/>
 
         </Routes>
       </div>

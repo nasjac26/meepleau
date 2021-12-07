@@ -40,7 +40,7 @@ function Profile( props ) {
                     </div>
                     <div className="col-20 pt-5">
                         <div className="container border col">
-                            <div><Search boardGameList={props.boardGameList} user={props.user} /></div>
+                            <div><Search Search user={props.user} handleChange={props.handleChange} searchFormData={props.searchFormData} boardGameList={props.boardGameList} boardGamesToDisplay={props.boardGamesToDisplay} /></div>
 
                         </div>
                     </div>
