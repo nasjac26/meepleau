@@ -1,6 +1,6 @@
 class GameNightsController < ApplicationController
     def index
-        render json: GameNight.all
+        render json: GameNight.all, status: :ok
     end
 
     def show
@@ -9,11 +9,8 @@ class GameNightsController < ApplicationController
     end
 
     def create
-        game_night = GameNight.create(
-            user_id: params[:user_id],
-            game_id: params[:game_id]
-            )
-        game_night.to_json
+        new_game_night = GameNight.create!(game_night_params)  
+        render json: new_game_night, status: :created
     end
 
     def update
@@ -21,5 +18,11 @@ class GameNightsController < ApplicationController
         this_user.update!(game_id: params[:game_id])
         render json: this_user, status: :ok
 
+    end
+
+    private
+
+    def game_night_params
+        params.permit(:user_id, :game_id)
     end
 end

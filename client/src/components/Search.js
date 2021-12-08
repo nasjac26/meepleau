@@ -16,6 +16,7 @@ function Search(props) {
                 <div>
                     <GameCard
                         key={singleGame.id}
+                        id={singleGame.id}
                         title={singleGame.title}
                         image={singleGame.medium_image}
                         year_published={singleGame.year_published}

@@ -18,6 +18,7 @@ function GameCard(props) {
     
     function handleGameSessionClick(event){
         event.preventDefault()
+        console.log(props)
         const gameNight = {
             user_id: props.user.id,
             game_id: props.id
