@@ -46,7 +46,6 @@ function Search(props) {
                     placeholder="Search our games"
                     name="search games"
                     onChange={props.handleChange}
-                    value={props.searchFormData}
                 />
                     </form>
             </div>

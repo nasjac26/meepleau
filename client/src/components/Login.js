@@ -19,8 +19,9 @@ function Login({ setUser }) {
                 response.json().then((user) => setUser(user));
             }
         });
-        navigate('/');
+        navigate('/ourlibrary');
     }
+
 
     return (
         <div className="container registration-container mt-5">

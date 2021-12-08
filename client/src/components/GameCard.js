@@ -30,6 +30,7 @@ function GameCard(props) {
             },
             body: JSON.stringify(gameNight)
         })
+        alert("Enjoy your session! Please Return the game before checking out another.")
     }
             
     //handling favorite game PATCH request
