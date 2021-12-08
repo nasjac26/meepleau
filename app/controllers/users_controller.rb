@@ -16,10 +16,20 @@ class UsersController < ApplicationController
             render json: user, status: :created
         end
     end
+
+    def update
+        this_user = User.find(params[:id])
+        this_user.update!(user_update_params)
+        render json: this_user, status: :ok
+    end
     private
 
     def user_signup_params
         params.require(:username, :password, :password_confirmation, :game_id)
+    end
+
+    def user_update_params
+        params.permit(:username, :password, :lfg, :game_id, :location, :image, )
     end
 
     def user_login_params

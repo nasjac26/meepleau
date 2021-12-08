@@ -13,13 +13,6 @@ class GameNightsController < ApplicationController
         render json: new_game_night, status: :created
     end
 
-    def update
-        this_user = User.find(params[:id])
-        this_user.update!(game_id: params[:game_id])
-        render json: this_user, status: :ok
-
-    end
-
     private
 
     def game_night_params

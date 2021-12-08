@@ -52,7 +52,6 @@ function Navbar( { user, setUser } ) {
             {user ? showProfileButton() : null}
             {!user ? showSignupButton() : null}
             {!user ? showLoginButton() : showLogoutButton()}
-            
             </div>
         </nav>
 

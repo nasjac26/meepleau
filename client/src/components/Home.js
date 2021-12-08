@@ -23,7 +23,7 @@ function Home(props) {
     return (
         <div className="text-center">
             {!props.user ? welcomeGuest() : welcomeAlertLoggedIn()}
-            <Search user={props.user} handleChange={props.handleChange} searchFormData={props.searchFormData} boardGameList={props.boardGameList} boardGamesToDisplay={props.boardGamesToDisplay} />
+            <Search user={props.user} setUser={props.setUser} reload={props.reload} setReload={props.setReload} handleChange={props.handleChange} searchFormData={props.searchFormData} boardGameList={props.boardGameList} boardGamesToDisplay={props.boardGamesToDisplay} />
         </div>
     )
     };

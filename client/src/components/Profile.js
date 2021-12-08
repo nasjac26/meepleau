@@ -33,14 +33,15 @@ function Profile( props ) {
                                 My Favorite Game
                             </div>
                             <ul class="list-group">
-                                <li className="list-group-item">{props.user.favorite_game.title}</li>
-                                <img src={props.user.favorite_game.medium_image} class="card-img-left" alt="user profile avatar"></img>
+                            
+                                {props.user.favorite_game && <div><li className="list-group-item">{props.user.favorite_game.title}</li>
+                                <img src={props.user.favorite_game.medium_image} className="card-img-left" style={{maxHeight:"200px"}} alt="user profile avatar"></img></div>}
                             </ul>
                         </div>
                     </div>
                     <div className="col-20 pt-5">
                         <div className="container border col">
-                            <div><Search Search user={props.user} handleChange={props.handleChange} searchFormData={props.searchFormData} boardGameList={props.boardGameList} boardGamesToDisplay={props.boardGamesToDisplay} /></div>
+                            <div><Search Search user={props.user} setUser={props.setUser} reload={props.reload} setReload={props.setReload} handleChange={props.handleChange} searchFormData={props.searchFormData} boardGameList={props.boardGameList} boardGamesToDisplay={props.boardGamesToDisplay} /></div>
 
                         </div>
                     </div>

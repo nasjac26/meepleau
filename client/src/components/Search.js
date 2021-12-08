@@ -4,11 +4,11 @@ function Search(props) {
     
     // Handeling the render/filter of games
     let filteredBoardGameList = [];
-    const filterBoardGameList = props.boardGameList.filter(boardGame => {
+
+    const filterBoardGameList = !!props.boardGameList ? props.boardGameList.filter(boardGame => {
         if (boardGame.title.toLowerCase().includes(props.searchFormData.toLowerCase())) {
             return filteredBoardGameList.push(boardGame);
-        }
-    });
+        }}) : null;
 
     const gamesToDisplay = filteredBoardGameList.map(
         (singleGame) => {
@@ -27,6 +27,9 @@ function Search(props) {
                         min_playtime={singleGame.min_playtime}
                         max_playtime={singleGame.max_playtime}
                         user={props.user}
+                        setUser={props.setUser}
+                        setReload={props.setReload}
+                        reload={props.reload}
                     />
                 </div>
             );
@@ -51,7 +54,9 @@ function Search(props) {
             </div>
             <div>
             <div className="container">
-                <div>{gamesToDisplay}</div>
+                <div>
+                    {gamesToDisplay}
+                </div>
             </div>
             </div>
         </div>

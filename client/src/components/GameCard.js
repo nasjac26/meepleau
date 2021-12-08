@@ -35,17 +35,28 @@ function GameCard(props) {
             
     //handling favorite game PATCH request
 
+    
+
     function handleFavoriteGameClick(event){
+        const updatedUser = {
+            game_id: props.id,
+            user_id: props.user.id,
+            image: props.user.image,
+            lfg: props.user.lfg,
+            location: props.user.location,
+            password: props.user.password_digest,
+            username: props.user.username
+        }
         event.preventDefault()
-        fetch('/gamenights', {
+        fetch(`/users/${props.user.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({game_id: props.id})
-        }
-
-        )
+            body: JSON.stringify(updatedUser)
+        })
+            .then(props.setUser(updatedUser))
+            .then(props.setReload(!props.reload))
     }
     
 
