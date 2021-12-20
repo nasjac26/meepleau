@@ -1,25 +1,39 @@
-# README
+# Meepleau
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Meepleau is a tool for boardgame cafe's to track what customers play and enjoy.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Navigate to your terminal, clone down this repository, & navigate to the project folder.
 
-* System dependencies
 
-* Configuration
+```bash
+cd meepleau
+```
 
-* Database creation
+Next, install dependencies, migrate, and seed the database:
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle install rails db:migrate db:seed
+```
+Start up the rails server:
 
-* Deplo  yment instructions
+```bash
+rails s
+```
+Then, navigate to the client folder. Once there, run:
 
-* ...
-# meepleau-development
+```bash
+npm install npm start --prefix client
+```
+
+## Thanks To...
+https://www.boardgameatlas.com/
+
+For access to their wonderful API!
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
